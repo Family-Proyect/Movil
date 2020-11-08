@@ -1,0 +1,74 @@
+ion-footer {
+    text-align: center;
+    padding: 30px 0 30px 0;
+    font-size: 15px;
+    background: linear-gradient(90deg, #0075ec, #00c6e4);
+    color: white;
+}
+
+ion-content {
+    --background: white;
+    font-weight: bold;
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        .header {
+            flex: 0.3;
+            justify-content: center;
+            text-align: center;
+            padding-top: 60px;
+            h3 {
+                color: 001332;
+            }
+            #logo {
+                width: 200px;
+                height: 40px;
+            }
+        }
+        .body {
+            flex: 0.9;
+            ion-list {
+                text-align: center;
+                padding: 10px;
+                background-color: white;
+                .contra {
+                    font-size: 10px;
+                    text-align: right;
+                    border: none;
+                    color: #00c6e4;
+                    margin-bottom: 15px
+                }
+                ion-item {
+                    margin: 10px;
+                    --highlight-height: 0px;
+                    --border-color: #00c6e4;
+                    --border-radius: 20px;
+                    .login {
+                        border-radius: 4px;
+                        margin-bottom: 10px;
+                    }
+                    ion-icon {
+                        color: #00c6e4;
+                    }
+                    ion-input {
+                        --color: #00c6e4;
+                    }
+                }
+                div {
+                    .error {
+                        color: #a51f1f;
+                        font-size: small;
+                        text-align: end;
+                    }
+                }
+            }
+            ion-button {
+                --border-color: linear-gradient(90deg, #0075ec, #00c6e4);
+                text-transform: none!important
+            }
+        }
+    }
+}

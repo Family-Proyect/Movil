@@ -1,7 +1,8 @@
 {
   "name": "Movil",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

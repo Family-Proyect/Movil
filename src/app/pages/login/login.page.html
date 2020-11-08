@@ -1,0 +1,69 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+
+    <div class="container">
+
+        <div class="header">
+            <img src="../../../assets/images/logo.png" id="logo" alt="Logo Family">
+        </div>
+
+        <div class="body">
+
+            <ion-list>
+                <!--<form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">-->
+                <ion-item class="login">
+                    <ion-icon slot="start" name="person"></ion-icon>
+                    <!--<ion-input placeholder="Cedula" type="text" formControlName="identificacion"></ion-input>-->
+                    <ion-input placeholder="Usuario" type="text"></ion-input>
+                </ion-item>
+
+                <!--<div *ngIf="( credentialsForm.get('identificacion').hasError('minlength') || credentialsForm.get('identificacion').hasError('required') ) && credentialsForm.get('identificacion').touched">
+                    <div class="error" *ngIf="credentialsForm.get('identificacion').hasError('required') && credentialsForm.get('identificacion').touched">
+                        Este campo es requerido
+                    </div>
+                    <div class="error" *ngIf="credentialsForm.get('identificacion').hasError('minlength') && credentialsForm.get('identificacion').touched">
+                        Cedula invalida
+                    </div>
+                </div>-->
+
+                <ion-item class="login">
+                    <ion-icon slot="start" name="lock-closed"></ion-icon>
+                    <!--<ion-input placeholder="Contraseña" type="password" formControlName="password"></ion-input>-->
+                    <ion-input placeholder="Contraseña" type="password"></ion-input>
+                </ion-item>
+
+                <!--<div no-lines *ngIf="( credentialsForm.get('password').hasError('minlength') || credentialsForm.get('password').hasError('required') ) && credentialsForm.get('password').touched">
+                    <div class="error" *ngIf="credentialsForm.get('password').hasError('required') && credentialsForm.get('password').touched">
+                        Este campo es requerido
+                    </div>
+                    <div class="error" *ngIf="credentialsForm.get('password').hasError('minlength') && credentialsForm.get('password').touched">
+                        Contraseña invalida
+                    </div>
+                </div>-->
+
+                <!--<div class="w3l-form-group" *ngIf="showErrorMessage">
+                    <label>Usuario o contraseña incorrecto..</label>
+                </div>-->
+
+                <div class="contra">
+                    <ion-label>¿Olvidaste tu contraseña?</ion-label>
+                </div>
+
+                <ion-button type="submit" fill="outline" shape="round" size="default">
+                    Iniciar Sesión
+                </ion-button>
+                <!--</form>-->
+                <ion-item-divider>
+                </ion-item-divider>
+            </ion-list>
+
+        </div>
+    </div>
+
+</ion-content>
+<ion-footer *ngIf="isKeyboardHide">
+    ¿Nuevo Usuario? <strong>¡Regístrate aquí!</strong>
+</ion-footer>
