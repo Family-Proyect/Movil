@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Registrarse</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-avatar>
+        <img src="../../assets/images/avatar.svg">
+    </ion-avatar>
+
+    <ion-list>
+        <ion-item>
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-input placeholder="Usuario" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="mail"></ion-icon>
+            <ion-input placeholder="Correo Electronico" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="male-female"></ion-icon>
+            <ion-select interface="popover" placeholder="Genero">
+                <ion-select-option value="F">Femenino</ion-select-option>
+                <ion-select-option value="M">Masculino</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="calendar"></ion-icon>
+            <ion-datetime display-format="DD.MM.YYYY" cancel-text="Cancelar" done-text="Aceptar" placeholder="Fecha de Nacimiento"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="key"></ion-icon>
+            <ion-input placeholder="Contraseña" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon slot="start" name="key"></ion-icon>
+            <ion-input placeholder="Repetir Contraseña" type="text"></ion-input>
+        </ion-item>
+        <ion-button type="submit" fill="outline" shape="round" size="default">
+            Registrarse
+        </ion-button>
+    </ion-list>
+
+</ion-content>
