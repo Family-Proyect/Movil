@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,8 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

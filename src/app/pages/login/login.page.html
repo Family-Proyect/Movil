@@ -1,5 +1,10 @@
 <ion-header>
-
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Recuperar Contraseña</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -49,7 +54,7 @@
                 </div>-->
 
                 <div class="contra">
-                    <ion-label>¿Olvidaste tu contraseña?</ion-label>
+                    <ion-label routerLink="/recuperar">¿Olvidaste tu contraseña?</ion-label>
                 </div>
 
                 <ion-button type="submit" fill="outline" shape="round" size="default">
