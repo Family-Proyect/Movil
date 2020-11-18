@@ -3,7 +3,9 @@ import { environment } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { AlertController, Platform } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +14,19 @@ export class LoginService {
   url = environment.apiUrl;
   authenticationState = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient,private alertController : AlertController) { }
+  constructor(
+    private http: HttpClient,
+    private alertController : AlertController,
+    private router: Router,
+    ) { }
 
   login(credentials) {
     return this.http.post(this.url+'login/', credentials)
       .pipe(
         tap(res => {
-          console.log(res)
-          /*if(res['access_token']!=null){
+          if(res['status']=="true"){
             this.authenticationState.next(true);
+            this.router.navigate(['/temas']);
           }else{
             this.alertController.create({
               header: 'Usuario o Contraseña incorrectos',
@@ -30,7 +36,7 @@ export class LoginService {
             }).then(res => {
               res.present();    
             });
-          }*/            
+          }
         }),
         catchError(e => {
           console.log(e.error.msg);           

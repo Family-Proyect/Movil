@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { LoginService } from '../../services/login.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,16 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 })
 export class LoginPage implements OnInit {
   isKeyboardHide=true;
+  credentialsForm: FormGroup;
 
-  constructor(private keyboard:Keyboard) { }
+  constructor(private keyboard:Keyboard, private loginservice:LoginService,
+    private formBuilder: FormBuilder, ) { }
 
   ngOnInit() {
+    this.credentialsForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5)]]
+    });
   }
 
   ionViewWillEnter() {
@@ -24,6 +32,12 @@ export class LoginPage implements OnInit {
       this.isKeyboardHide=true;
       // console.log('HIDEK');
     });
+  }
+
+  onSubmit() {
+    if(this.credentialsForm.valid){
+      this.loginservice.login(this.credentialsForm.value).subscribe();
+    }
   }
 
 }
