@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -17,7 +16,6 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private alertController : AlertController,
-    private router: Router,
     ) { }
 
   login(credentials) {
@@ -26,7 +24,6 @@ export class LoginService {
         tap(res => {
           if(res['status']=="true"){
             this.authenticationState.next(true);
-            this.router.navigate(['/temas']);
           }else{
             this.alertController.create({
               header: 'Usuario o Contraseña incorrectos',

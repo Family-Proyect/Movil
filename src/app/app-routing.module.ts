@@ -5,12 +5,9 @@ const routes: Routes = [
   {
     path: '',
     //redirectTo: 'folder/Inbox',
-    redirectTo: 'login',
+    //redirectTo: 'login',
+    redirectTo: 'temas',
     pathMatch: 'full'
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
     path: 'login',
@@ -26,6 +23,10 @@ const routes: Routes = [
   },
   {
     path: 'temas',
+    loadChildren: () => import('./pages/temas/temas.module').then( m => m.TemasPageModule)
+  },
+  {
+    path: 'temas/:id',
     loadChildren: () => import('./pages/temas/temas.module').then( m => m.TemasPageModule)
   },
   {
@@ -55,6 +56,18 @@ const routes: Routes = [
   {
     path: 'galeria',
     loadChildren: () => import('./pages/galeria/galeria.module').then( m => m.GaleriaPageModule)
+  },
+  {
+    path: 'tips',
+    loadChildren: () => import('./pages/tips/tips.module').then( m => m.TipsPageModule)
+  },
+  {
+    path: 'testimonio',
+    loadChildren: () => import('./pages/testimonio/testimonio.module').then( m => m.TestimonioPageModule)
+  },
+  {
+    path: 'configuracion',
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
   }
 ];
 

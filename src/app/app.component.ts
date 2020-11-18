@@ -4,6 +4,9 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { Router } from '@angular/router';
+import { LoginService } from './services/login.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,42 +16,49 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Temas',
+      url: '/temas',
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Testimonios',
+      url: '/testimonio',
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Tips',
+      url: '/tips',
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Sugerencias',
+      url: '/sugerencias',
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Galeria',
+      url: '/galeria',
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Donaciones',
+      url: '/donacion',
+    },
+    {
+      title: 'Campañas',
+      url: '/campanias',
+    },
+    {
+      title: 'Perfil',
+      url: '/perfil',
+    },
+    {
+      title: 'Configuracion',
+      url: '/configuracion',
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private loginservice: LoginService,
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -57,6 +67,7 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#00c6e4');
       //this.splashScreen.hide();
+      this.iniciarSesion()
     });
   }
 
@@ -66,4 +77,16 @@ export class AppComponent implements OnInit {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
   }
+
+  private iniciarSesion(){
+    this.loginservice.authenticationState.subscribe(state=>{
+      if(state){
+        //this.getUsuario();
+        this.router.navigate(['/temas']);
+      }else{
+        this.router.navigate(['/']);
+      }
+    })
+  }
+
 }
