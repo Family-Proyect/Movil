@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { TemasService } from '../../services/temas.service';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-temas',
@@ -7,24 +8,17 @@ import { IonInfiniteScroll } from '@ionic/angular';
   styleUrls: ['./temas.page.scss'],
 })
 export class TemasPage implements OnInit {
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  media = environment.media;
+  temas:any;
 
-  constructor() { }
+  constructor(private temasService: TemasService) { }
 
   ngOnInit() {
-  }
-
-  loadData(event) {
-    setTimeout(() => {
-      console.log('Done');
-      event.target.complete();
-
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-      /*if (data.length == 1000) {
-        event.target.disabled = true;
-      }*/
-    }, 500);
+    this.temasService.cargarTemasPrincipales().subscribe(
+      data => {
+        this.temas = data;
+        console.log(data);
+      });
   }
 
 }

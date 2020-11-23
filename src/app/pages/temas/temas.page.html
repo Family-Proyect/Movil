@@ -9,11 +9,15 @@
 
 <ion-content fullscreen>
 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Cargando...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+   <ion-card *ngFor="let tema of temas;">
+      <img src="{{media+tema.image}}"/>
+      <ion-card-header>
+        <ion-card-subtitle>Destination</ion-card-subtitle>
+        <ion-card-title>Madison, WI</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>
