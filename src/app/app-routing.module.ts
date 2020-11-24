@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -27,31 +28,38 @@ const routes: Routes = [
   },
   {
     path: 'temas/:id',
-    loadChildren: () => import('./pages/temas/temas.module').then( m => m.TemasPageModule)
+    loadChildren: () => import('./pages/temas/temas.module').then( m => m.TemasPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'tema-detalle',
-    loadChildren: () => import('./pages/tema-detalle/tema-detalle.module').then( m => m.TemaDetallePageModule)
+    loadChildren: () => import('./pages/tema-detalle/tema-detalle.module').then( m => m.TemaDetallePageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'consejeria',
-    loadChildren: () => import('./pages/consejeria/consejeria.module').then( m => m.ConsejeriaPageModule)
+    loadChildren: () => import('./pages/consejeria/consejeria.module').then( m => m.ConsejeriaPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'donacion',
-    loadChildren: () => import('./pages/donacion/donacion.module').then( m => m.DonacionPageModule)
+    loadChildren: () => import('./pages/donacion/donacion.module').then( m => m.DonacionPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'campanias',
-    loadChildren: () => import('./pages/campanias/campanias.module').then( m => m.CampaniasPageModule)
+    loadChildren: () => import('./pages/campanias/campanias.module').then( m => m.CampaniasPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'sugerencias',
-    loadChildren: () => import('./pages/sugerencias/sugerencias.module').then( m => m.SugerenciasPageModule)
+    loadChildren: () => import('./pages/sugerencias/sugerencias.module').then( m => m.SugerenciasPageModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'galeria',
@@ -67,7 +75,8 @@ const routes: Routes = [
   },
   {
     path: 'configuracion',
-    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule),
+    canActivate: [AuthGuardService]
   }
 ];
 

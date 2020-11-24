@@ -17,7 +17,6 @@ export class TemasPage implements OnInit {
     this.temasService.cargarTemasPrincipales().subscribe(
       data => {
         this.temas = data;
-        console.log(data);
       });
   }
 

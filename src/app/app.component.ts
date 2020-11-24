@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -13,43 +14,58 @@ import { LoginService } from './services/login.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  private isAuth:boolean;
   public selectedIndex = 0;
   public appPages = [
     {
       title: 'Temas',
       url: '/temas',
+      wLogin: true,
     },
     {
       title: 'Testimonios',
       url: '/testimonio',
+      wLogin: true,
     },
     {
       title: 'Tips',
       url: '/tips',
+      wLogin: true,
     },
     {
       title: 'Sugerencias',
       url: '/sugerencias',
+      wLogin: false,
     },
     {
       title: 'Galeria',
       url: '/galeria',
+      wLogin: true,
+    },
+    {
+      title: 'Consejeria',
+      url: '/consejeria',
+      wLogin: false,
     },
     {
       title: 'Donaciones',
       url: '/donacion',
+      wLogin: false,
     },
     {
       title: 'Campañas',
       url: '/campanias',
+      wLogin: false,
     },
     {
       title: 'Perfil',
       url: '/perfil',
+      wLogin: false,
     },
     {
       title: 'Configuracion',
       url: '/configuracion',
+      wLogin: false,
     }
   ];
 
@@ -58,7 +74,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private loginservice: LoginService,
-    private router: Router
+    private router: Router,
+    private storage: Storage,
   ) {
     this.initializeApp();
   }
@@ -67,15 +84,23 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#00c6e4');
       //this.splashScreen.hide();
-      this.iniciarSesion()
+      this.iniciarSesion();
+      this.checkAuth();
     });
   }
-
+    
   ngOnInit() {
+    this.checkAuth();
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+  }
+  menuOpened(){
+    this.checkAuth();
+  }
+  menuClosed(){
+    this.checkAuth();
   }
 
   private iniciarSesion(){
@@ -84,9 +109,26 @@ export class AppComponent implements OnInit {
         //this.getUsuario();
         this.router.navigate(['/temas']);
       }else{
-        this.router.navigate(['/']);
+        this.router.navigate(['/temas']);
       }
     })
   }
 
+  private goToLogin(){
+    this.router.navigate(['/login']);
+  }
+
+  private checkAuth() {
+    this.storage.get('inicioSesion').then(auth => {
+      if (auth) {
+        this.isAuth = true;
+      }else{
+        this.isAuth = false;
+      }
+    });
+  }
+
+  private logout() {
+    this.loginservice.logout();
+  }
 }

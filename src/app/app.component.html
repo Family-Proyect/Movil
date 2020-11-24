@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay" side="end">
+    <ion-menu contentId="main-content" type="overlay" side="end" (ionWillOpen)="menuOpened()" (ionWillClose)="menuClosed()">
       <ion-content>
         <ion-list id="inbox-list">
           <ion-avatar>
@@ -8,7 +8,7 @@
           </ion-avatar>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+            <ion-item *ngIf="p.wLogin || isAuth" (click)="selectedIndex = i" routerDirection="forward" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -18,9 +18,14 @@
       <ion-footer>
         <ion-list id="labels-list">
           <ion-menu-toggle auto-hide="false" >
-            <ion-item  routerDirection="root" (click)="logout()" lines="none">
+            <ion-item *ngIf="isAuth; else logOut" (click)="logout()" lines="none">
               <ion-label>Cerrar Sesion</ion-label>
             </ion-item>
+            <ng-template #logOut>
+              <ion-item (click)="goToLogin()" lines="none">
+                <ion-label>Iniciar Sesion</ion-label>
+              </ion-item>
+            </ng-template>
           </ion-menu-toggle>
         </ion-list>
       </ion-footer>
