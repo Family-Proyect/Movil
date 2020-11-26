@@ -1,12 +1,62 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Galeria</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Galeria</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+    <ion-grid *ngIf="itemListData.length > 0; else skeleton" fixed>
+        <ion-row *ngFor="let image of itemListData;let i = index;">
+            <ion-col *ngIf="i%2==0" size="6">
+                <ion-img src="{{media+'/media/'+image.image}}"></ion-img>
+            </ion-col>
+            <ion-col *ngIf="i%2==0 && i+1 < itemListData.length" size="6">
+                <ion-img src="{{media+'/media/'+itemListData[i+1].image}}"></ion-img>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-infinite-scroll *ngIf="itemListData.length > 0" threshold="100px" (ionInfinite)="scroll($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
 </ion-content>
+
+<!-- Skeleton screen -->
+<ng-template #skeleton>
+    <ion-row class="pin-container">
+        <ion-col>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:220px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:120px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:180px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:80px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+        </ion-col>
+        <ion-col>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:150px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:240px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:100px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+            <div class="pin-item">
+                <ion-skeleton-text style="margin-bottom: 12px; height:180px; border-radius: 8px;" animated></ion-skeleton-text>
+            </div>
+        </ion-col>
+    </ion-row>
+</ng-template>
