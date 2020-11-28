@@ -18,29 +18,28 @@
         <div class="body">
 
             <ion-list>
-                <!--<form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">-->
+                <form [formGroup]="correoForm" (ngSubmit)="onSubmit()">
                 <ion-item class="recuperar">
                     <ion-label>Ingresa tu correo electrónico para recuperar tu contraseña</ion-label>
                 </ion-item>
                 <ion-item class="login">
                     <ion-icon slot="start" name="mail"></ion-icon>
-                    <!--<ion-input placeholder="Cedula" type="text" formControlName="identificacion"></ion-input>-->
-                    <ion-input placeholder="Correo Electronico" type="text"></ion-input>
+                    <ion-input placeholder="Correo Electronico" type="text" formControlName="correo"></ion-input>
                 </ion-item>
 
-                <!--<div *ngIf="( credentialsForm.get('identificacion').hasError('minlength') || credentialsForm.get('identificacion').hasError('required') ) && credentialsForm.get('identificacion').touched">
-                    <div class="error" *ngIf="credentialsForm.get('identificacion').hasError('required') && credentialsForm.get('identificacion').touched">
+                <div no-lines *ngIf="( correoForm.get('correo').hasError('pattern') || correoForm.get('correo').hasError('required') ) && correoForm.get('correo').touched">
+                    <div class="error" *ngIf="correoForm.get('correo').hasError('required') && correoForm.get('correo').touched">
                         Este campo es requerido
                     </div>
-                    <div class="error" *ngIf="credentialsForm.get('identificacion').hasError('minlength') && credentialsForm.get('identificacion').touched">
-                        Cedula invalida
+                    <div class="error" *ngIf="correoForm.get('correo').hasError('pattern') && correoForm.get('correo').touched">
+                        No es un correo
                     </div>
-                </div>-->
+                </div>
 
                 <ion-button type="submit" fill="solid" shape="round" size="default">
                     Recuperar
                 </ion-button>
-                <!--</form>-->
+                </form>
             </ion-list>
 
         </div>

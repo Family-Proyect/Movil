@@ -8,12 +8,15 @@ import { RecuperarPageRoutingModule } from './recuperar-routing.module';
 
 import { RecuperarPage } from './recuperar.page';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecuperarPageRoutingModule
+    RecuperarPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [RecuperarPage]
 })

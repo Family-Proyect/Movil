@@ -3,8 +3,6 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { LoginService } from '../../services/login.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,7 +16,6 @@ export class LoginPage implements OnInit {
     private keyboard:Keyboard, 
     private loginservice:LoginService,
     private formBuilder: FormBuilder, 
-    private router: Router,
     ) { }
 
   ngOnInit() {

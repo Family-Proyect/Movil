@@ -28,7 +28,6 @@ ion-content {
                 background-color: transparent;
                 .login {
                     border-radius: 4px;
-                    margin-bottom: 80px;
                 }
                 .recuperar {
                     font-size: 10px;
@@ -57,7 +56,8 @@ ion-content {
             ion-button {
                 --background: white;
                 text-transform: none!important;
-                color: #0075ec
+                color: #0075ec;
+                margin-top: 80px;
             }
         }
     }
