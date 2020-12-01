@@ -23,7 +23,6 @@ export class RecuperarPage implements OnInit {
 
   onSubmit() {
     if(this.correoForm.valid){
-      console.log(this.correoForm.value)
       this.recuperarservice.recuperar(this.correoForm.value).subscribe();
     }
   }

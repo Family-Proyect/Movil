@@ -14,36 +14,80 @@
     </ion-avatar>
 
     <ion-list>
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
         <ion-item>
             <ion-icon slot="start" name="person"></ion-icon>
-            <ion-input placeholder="Usuario" type="text"></ion-input>
+            <ion-input placeholder="Usuario" type="text" formControlName="usuario"></ion-input>
         </ion-item>
+        <div *ngIf="( registroForm.get('usuario').hasError('minlength') || registroForm.get('usuario').hasError('required') ) && registroForm.get('usuario').touched">
+            <div class="error" *ngIf="registroForm.get('usuario').hasError('required') && registroForm.get('usuario').touched">
+                Este campo es requerido
+            </div>
+            <div class="error" *ngIf="registroForm.get('usuario').hasError('minlength') && registroForm.get('usuario').touched">
+                Usuario invalida
+            </div>
+        </div>
         <ion-item>
             <ion-icon slot="start" name="mail"></ion-icon>
-            <ion-input placeholder="Correo Electronico" type="text"></ion-input>
+            <ion-input placeholder="Correo Electronico" type="text" formControlName="correo"></ion-input>
         </ion-item>
+        <div no-lines *ngIf="( registroForm.get('correo').hasError('pattern') || registroForm.get('correo').hasError('required') ) && registroForm.get('correo').touched">
+            <div class="error" *ngIf="registroForm.get('correo').hasError('required') && registroForm.get('correo').touched">
+                Este campo es requerido
+            </div>
+            <div class="error" *ngIf="registroForm.get('correo').hasError('pattern') && registroForm.get('correo').touched">
+                No es un correo
+            </div>
+        </div>
         <ion-item>
             <ion-icon slot="start" name="male-female"></ion-icon>
-            <ion-select interface="popover" placeholder="Genero">
+            <ion-select interface="popover" placeholder="Genero" formControlName="genero">
                 <ion-select-option value="F">Femenino</ion-select-option>
                 <ion-select-option value="M">Masculino</ion-select-option>
             </ion-select>
         </ion-item>
+        <div no-lines *ngIf="( registroForm.get('genero').hasError('required') ) && registroForm.get('genero').touched">
+            <div class="error" *ngIf="registroForm.get('genero').hasError('required') && registroForm.get('genero').touched">
+                Este campo es requerido
+            </div>
+        </div>
         <ion-item>
             <ion-icon slot="start" name="calendar"></ion-icon>
-            <ion-datetime display-format="DD.MM.YYYY" cancel-text="Cancelar" done-text="Aceptar" placeholder="Fecha de Nacimiento"></ion-datetime>
+            <ion-datetime display-format="DD-MM-YYYY" cancel-text="Cancelar" done-text="Aceptar" placeholder="Fecha de Nacimiento" formControlName="fnac"></ion-datetime>
         </ion-item>
+        <div no-lines *ngIf="( registroForm.get('fnac').hasError('required') ) && registroForm.get('fnac').touched">
+            <div class="error" *ngIf="registroForm.get('fnac').hasError('required') && registroForm.get('fnac').touched">
+                Este campo es requerido
+            </div>
+        </div>
         <ion-item>
             <ion-icon slot="start" name="key"></ion-icon>
-            <ion-input placeholder="Contraseña" type="text"></ion-input>
+            <ion-input placeholder="Contraseña" type="password" formControlName="contraseña"></ion-input>
         </ion-item>
+        <div no-lines *ngIf="( registroForm.get('contraseña').hasError('minlength') || registroForm.get('contraseña').hasError('required') ) && registroForm.get('contraseña').touched">
+            <div class="error" *ngIf="registroForm.get('contraseña').hasError('required') && registroForm.get('contraseña').touched">
+                Este campo es requerido
+            </div>
+            <div class="error" *ngIf="registroForm.get('contraseña').hasError('minlength') && registroForm.get('contraseña').touched">
+                Contraseña invalida
+            </div>
+        </div>
         <ion-item>
             <ion-icon slot="start" name="key"></ion-icon>
-            <ion-input placeholder="Repetir Contraseña" type="text"></ion-input>
+            <ion-input placeholder="Repetir Contraseña" type="password" formControlName="confirmContra"></ion-input>
         </ion-item>
+        <div no-lines *ngIf="( registroForm.get('confirmContra').hasError('minlength') || registroForm.get('confirmContra').hasError('required') ) && registroForm.get('confirmContra').touched">
+            <div class="error" *ngIf="registroForm.get('confirmContra').hasError('required') && registroForm.get('confirmContra').touched">
+                Este campo es requerido
+            </div>
+            <div class="error" *ngIf="registroForm.get('confirmContra').hasError('minlength') && registroForm.get('confirmContra').touched">
+                Contraseña invalida
+            </div>
+        </div>
         <ion-button type="submit" fill="outline" shape="round" size="default">
             Registrarse
         </ion-button>
+    </form>
     </ion-list>
 
 </ion-content>
