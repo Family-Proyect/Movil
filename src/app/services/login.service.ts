@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { AlertController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class LoginService {
     private alertController : AlertController,
     private storage: Storage,
     private plt: Platform,
+    private googlePlus: GooglePlus,
     ) { 
       this.plt.ready().then(() => {
         this.checkAuth();
@@ -50,9 +52,52 @@ export class LoginService {
       );    
   }
 
+  loginGoogle(){
+    /*const loading = await this.loadingController.create({
+      message: 'Please wait...'
+    });
+    this.presentLoading(loading);*/
+  
+    this.googlePlus.login({
+      /*'scopes': '',
+      'webClientId': 'webClientId.apps.googleusercontent.com',
+      'offline': true */
+    })
+    .then(user =>{
+      this.storage.set('inicioGoogle', true);
+      this.authenticationState.next(true);
+      //loading.dismiss();
+  
+      /*this.nativeStorage.setItem('google_user', {
+        name: user.displayName,
+        email: user.email,
+        picture: user.imageUrl
+      })
+      .then(() =>{
+        this.router.navigate(["/user"]);
+      }, error =>{
+        console.log(error);
+      })
+      loading.dismiss();*/
+    }, err =>{
+      console.log(err)
+      //loading.dismiss();
+    });
+  
+    /*async presentLoading(loading) {
+      return await loading.present();
+    }*/
+  }
+
   logout() {
     this.storage.remove('inicioSesion');
     this.authenticationState.next(false);
+  }
+
+  logoutGoogle(){
+    this.storage.remove('inicioGoogle');
+    this.authenticationState.next(false);
+    this.googlePlus.logout();
   }
 
   isAuthenticated() {
@@ -61,6 +106,13 @@ export class LoginService {
 
   private checkAuth() {
     this.storage.get('inicioSesion').then(auth => {
+      if (auth) {
+        this.authenticationState.next(true);
+      }else{
+        this.authenticationState.next(false);
+      }
+    });
+    this.storage.get('inicioGoogle').then(auth => {
       if (auth) {
         this.authenticationState.next(true);
       }else{

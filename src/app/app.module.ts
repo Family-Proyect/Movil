@@ -13,6 +13,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { GooglePlus } from '@ionic-native/google-plus/ngx'
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Keyboard,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

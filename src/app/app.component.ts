@@ -126,9 +126,25 @@ export class AppComponent implements OnInit {
         this.isAuth = false;
       }
     });
+    this.storage.get('inicioGoogle').then(googleAuth => {
+      if (googleAuth) {
+        this.isAuth = true;
+      }else{
+        this.isAuth = false;
+      }
+    });
   }
 
   private logout() {
-    this.loginservice.logout();
+    this.storage.get('inicioSesion').then(auth => {
+      if (auth) {
+        this.loginservice.logout();
+      }
+    });
+    this.storage.get('inicioGoogle').then(authGoogle => {
+      if (authGoogle) {
+        this.loginservice.logoutGoogle();
+      }
+    });
   }
 }

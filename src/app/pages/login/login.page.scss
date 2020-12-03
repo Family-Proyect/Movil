@@ -67,7 +67,10 @@ ion-content {
             }
             ion-button {
                 --border-color: linear-gradient(90deg, #0075ec, #00c6e4);
-                text-transform: none!important
+                text-transform: none!important;
+                #google {
+                    margin-top: 10px;
+                }
             }
         }
     }

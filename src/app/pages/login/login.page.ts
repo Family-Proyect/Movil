@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { LoginService } from '../../services/login.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginPage implements OnInit {
     private keyboard:Keyboard, 
     private loginservice:LoginService,
     private formBuilder: FormBuilder, 
+    private storage: Storage,
     ) { }
 
   ngOnInit() {
@@ -43,4 +45,7 @@ export class LoginPage implements OnInit {
     }
   }
 
+  googeLogin(){
+    this.loginservice.loginGoogle();
+  }
 }
