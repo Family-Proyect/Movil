@@ -109,14 +109,13 @@ export class LoginService {
       if (auth) {
         this.authenticationState.next(true);
       }else{
-        this.authenticationState.next(false);
-      }
-    });
-    this.storage.get('inicioGoogle').then(auth => {
-      if (auth) {
-        this.authenticationState.next(true);
-      }else{
-        this.authenticationState.next(false);
+        this.storage.get('inicioGoogle').then(auth => {
+          if (auth) {
+            this.authenticationState.next(true);
+          }else{
+            this.authenticationState.next(false);
+          }
+        });
       }
     });
   }

@@ -123,14 +123,13 @@ export class AppComponent implements OnInit {
       if (auth) {
         this.isAuth = true;
       }else{
-        this.isAuth = false;
-      }
-    });
-    this.storage.get('inicioGoogle').then(googleAuth => {
-      if (googleAuth) {
-        this.isAuth = true;
-      }else{
-        this.isAuth = false;
+        this.storage.get('inicioGoogle').then(googleAuth => {
+          if (googleAuth) {
+            this.isAuth = true;
+          }else{
+            this.isAuth = false;
+          }
+        });
       }
     });
   }
@@ -139,11 +138,12 @@ export class AppComponent implements OnInit {
     this.storage.get('inicioSesion').then(auth => {
       if (auth) {
         this.loginservice.logout();
-      }
-    });
-    this.storage.get('inicioGoogle').then(authGoogle => {
-      if (authGoogle) {
-        this.loginservice.logoutGoogle();
+      }else{
+        this.storage.get('inicioGoogle').then(authGoogle => {
+          if (authGoogle) {
+            this.loginservice.logoutGoogle();
+          }
+        });
       }
     });
   }
