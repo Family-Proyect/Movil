@@ -32,17 +32,18 @@ ion-content {
                 .recuperar {
                     font-size: 10px;
                     text-align: center;
+                    color: #00c6e4;
                 }
                 ion-item {
                     margin: 10px;
                     --highlight-height: 0px;
-                    --border-color: white;
+                    --border-color: #00c6e4;
                     --border-radius: 20px;
                     ion-icon {
-                        color: white;
+                        color: #00c6e4;
                     }
                     ion-input {
-                        --color: white;
+                        --color: #00c6e4;
                     }
                 }
                 div {
