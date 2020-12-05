@@ -14,7 +14,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  private isAuth:boolean;
+  public isAuth:boolean;
   public selectedIndex = 0;
   public appPages = [
     {
@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
     this.checkAuth();
   }
 
-  private iniciarSesion(){
+  public iniciarSesion(){
     this.loginservice.authenticationState.subscribe(state=>{
       if(state){
         //this.getUsuario();
@@ -114,11 +114,11 @@ export class AppComponent implements OnInit {
     })
   }
 
-  private goToLogin(){
+  public goToLogin(){
     this.router.navigate(['/login']);
   }
 
-  private checkAuth() {
+  public checkAuth() {
     this.storage.get('inicioSesion').then(auth => {
       if (auth) {
         this.isAuth = true;
@@ -134,7 +134,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private logout() {
+  public logout() {
     this.storage.get('inicioSesion').then(auth => {
       if (auth) {
         this.loginservice.logout();
