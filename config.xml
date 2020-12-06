@@ -2,7 +2,7 @@
 <widget id="com.family.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>FamilyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <author email="cluis0152@gmail.com" href="http://ionicframework.com/">Family Developers</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -100,6 +100,6 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-googleplus" source="npm">
         <variable name="REVERSED_CLIENT_ID" value="com.family.app" />
-        <variable name="WEB_APPLICATION_CLIENT_ID" value="790605058407-lqjq61iknc0kiqt0epgmb81cbmfrpvnc.apps.googleusercontent.com" />
+        <variable name="WEB_APPLICATION_CLIENT_ID" value="135684883297-m3msoe0gjo1kcm3g4kcluvs37i43i3uu.apps.googleusercontent.com" />
     </plugin>
 </widget>

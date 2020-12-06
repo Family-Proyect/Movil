@@ -82,6 +82,14 @@ export class LoginService {
     }, err =>{
       console.log(err)
       //loading.dismiss();
+      this.alertController.create({
+        header: 'Error',
+        cssClass:'alert',
+        message: err,
+        buttons: ['Aceptar']
+      }).then(res => {
+        res.present();    
+      });
     });
   
     /*async presentLoading(loading) {
