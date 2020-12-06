@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 
     this.keyboard.onKeyboardWillHide().subscribe(()=>{
       this.isKeyboardHide=true;
-      // console.log('HIDEK');
+      // console.log('HIDEK'); 
     });
   }
 
