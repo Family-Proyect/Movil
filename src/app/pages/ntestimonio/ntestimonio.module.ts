@@ -5,18 +5,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TestimonioPageRoutingModule } from './testimonio-routing.module';
+import { NtestimonioPageRoutingModule } from './ntestimonio-routing.module';
 
-import { TestimonioPage } from './testimonio.page';
+import { NtestimonioPage } from './ntestimonio.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TestimonioPageRoutingModule,
+    NtestimonioPageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [TestimonioPage]
+  declarations: [NtestimonioPage]
 })
-export class TestimonioPageModule {}
+export class NtestimonioPageModule {}

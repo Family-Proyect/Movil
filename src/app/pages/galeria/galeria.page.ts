@@ -12,7 +12,7 @@ export class GaleriaPage implements OnInit {
   params: string;
   itemListData = [];
   page_number = 0;
-  page_limit = 8;
+  page_limit = 12;
 
   constructor(
     private galeriaservice:GaleriaService,
@@ -28,7 +28,6 @@ export class GaleriaPage implements OnInit {
     this.params = '?_page=' + this.page_number + '&_limit=' + this.page_limit;
     this.galeriaservice.getGaleria(this.params).subscribe(
       (data:any)=>{
-        console.log(data);
         for (let i = 0; i < data.length; i++) {
           this.itemListData.push(data[i]);
         }

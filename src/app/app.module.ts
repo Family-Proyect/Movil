@@ -13,10 +13,10 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { GooglePlus } from '@ionic-native/google-plus/ngx'
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   entryComponents: [],
   imports: [
     BrowserModule,

@@ -1,12 +1,15 @@
-page-pinterest {
-    ion-col {
-        padding: 0 !important;
-    }
-    .pin-container {
-        padding: 8px;
-    }
-    .pin-item {
-        margin: 8px;
-        margin-bottom: 24px;
+.image-container {
+    background-size: cover;
+    min-height: 250px
+}
+
+.images {
+    column-count: 2;
+}
+
+.one-image {
+    margin: 5px;
+    img {
+        border-radius: 8px;
     }
 }

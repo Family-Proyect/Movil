@@ -32,6 +32,7 @@ export class LoginService {
         tap(res => {
           if(res['status']=="true"){
             this.storage.set('inicioSesion', true);
+            this.storage.set('usuario', res['usuario']);
             this.authenticationState.next(true);
 
           }else{

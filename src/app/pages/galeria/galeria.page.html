@@ -10,14 +10,11 @@
 <ion-content>
 
     <ion-grid *ngIf="itemListData.length > 0; else skeleton" fixed>
-        <ion-row *ngFor="let image of itemListData;let i = index;">
-            <ion-col *ngIf="i%2==0" size="6">
-                <ion-img src="{{media+'/media/'+image.image}}"></ion-img>
-            </ion-col>
-            <ion-col *ngIf="i%2==0 && i+1 < itemListData.length" size="6">
-                <ion-img src="{{media+'/media/'+itemListData[i+1].image}}"></ion-img>
-            </ion-col>
-        </ion-row>
+        <div class="images">
+            <div class="one-image" *ngFor="let image of itemListData;">
+                <img src="{{media+'/media/'+image.image}}">
+            </div>
+        </div>
     </ion-grid>
 
     <ion-infinite-scroll *ngIf="itemListData.length > 0" threshold="100px" (ionInfinite)="scroll($event)">
