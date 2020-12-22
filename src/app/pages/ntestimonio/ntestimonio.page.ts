@@ -39,7 +39,7 @@ export class NtestimonioPage implements OnInit {
     if(this.testimonioForm.valid){
       this.storage.get('usuario').then(usuario => {
         this.testimonioForm.controls["name"].setValue(usuario);
-        this.testimonioservice.agregarTestimonio(this.testimonioForm.value).subscribe(res=>{this.close()}); 
+        this.testimonioservice.agregarTestimonio(this.testimonioForm.value).subscribe(res=>{this.close()});  
       })
     }
   }
