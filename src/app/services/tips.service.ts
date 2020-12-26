@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
-import { AlertController } from '@ionic/angular';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
-
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TestimonioService {
+export class TipsService {
   url = environment.apiUrl;
 
   constructor(
@@ -17,19 +16,20 @@ export class TestimonioService {
     private alertController : AlertController,
   ) { }
 
-  cargarTestimonios(){
-    return this.http.get(this.url+'get_testimonios/')
+  cargarTips(){
+    return this.http.get(this.url+'tips/')
   }
 
-  agregarTestimonio(testimonio){
-    return this.http.post(this.url+'send_testimonios/', testimonio)
+  agregarTip(tip){
+    console.log(tip);
+    /*return this.http.post(this.url+'send_tips/', tip)
       .pipe(
         map(
           (response : any) => {
             this.alertController.create({
-              header: 'Testimonio Cargado',
+              header: 'Tip Cargado',
               cssClass:'alert',
-              message: 'Su testimonio ha sido cargado exitosamente',
+              message: 'Su tip ha sido cargado exitosamente',
               buttons: ['Aceptar']
             }).then(res => {
               res.present();    
@@ -40,13 +40,13 @@ export class TestimonioService {
             this.alertController.create({
               header: 'Error',
               cssClass:'alert',
-              message: 'No se pudo cargar su testimonio',
+              message: 'No se pudo cargar su tip',
               buttons: ['Aceptar']
             }).then(res => {
               res.present();    
             });        
             throw new Error(e);
           })
-      );  
+      );*/ 
   }
 }

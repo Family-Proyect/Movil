@@ -1,6 +1,6 @@
 <ion-header translucent>
     <ion-toolbar>
-        <ion-title>Agregar Testimonio</ion-title>
+        <ion-title>Agregar Tip</ion-title>
         <ion-buttons slot="end">
             <ion-button (click)="close()">Cerrar</ion-button>
         </ion-buttons>
@@ -10,31 +10,40 @@
 <ion-content>
     <ion-card>
         <ion-card-header class="ion-text-justify">
-            Por favor escribe tu testimonio, el cual sera aprobado para ser publicado, agradecemos tu valentia.
+            Por favor escribe tu tip, el cual sera aprobado para ser publicado, agradecemos tu esfuerzo.
         </ion-card-header>
         <ion-card-content>
-            <form [formGroup]="testimonioForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="tipForm" (ngSubmit)="onSubmit()">
                 <ion-item id="testimonioTit">
                     <ion-label class="subt" position="floating">Titulo: </ion-label>
                     <ion-input autocapitalize="on" autocomplete="off" autocorrect="on" clearOnEdit="true" inputmode="text" type="text" formControlName="title"></ion-input>
                 </ion-item>
-                <div *ngIf="( testimonioForm.get('title').hasError('required') ) && testimonioForm.get('title').touched">
-                    <div class="error" *ngIf="testimonioForm.get('title').hasError('required') && testimonioForm.get('title').touched">
+                <div *ngIf="( tipForm.get('title').hasError('required') ) && tipForm.get('title').touched">
+                    <div class="error" *ngIf="tipForm.get('title').hasError('required') && tipForm.get('title').touched">
                         Este campo es requerido
                     </div>
                 </div>
                 <ion-item id="testimonioarea">
-                    <ion-label class="subt" position="floating">Testimonio: </ion-label>
+                    <ion-label class="subt" position="floating">Tip: </ion-label>
                     <ion-textarea rows="8" cols="20" clearOnEdit="true" formControlName="description"></ion-textarea>
                 </ion-item>
-                <div *ngIf="( testimonioForm.get('description').hasError('required') ) && testimonioForm.get('description').touched">
-                    <div class="error" *ngIf="testimonioForm.get('description').hasError('required') && testimonioForm.get('description').touched">
-                        Este campo es requerido 
+                <div *ngIf="( tipForm.get('description').hasError('required') ) && tipForm.get('description').touched">
+                    <div class="error" *ngIf="tipForm.get('description').hasError('required') && tipForm.get('description').touched">
+                        Este campo es requerido
                     </div>
                 </div>
                 <ion-item>
                     <ion-label>Anonimo: </ion-label>
                     <ion-toggle color="success" formControlName="anonimo"></ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <!-- Select File -->
+                    <input type="file" accept="image/*" (change)="showPreview($event)" />
+
+                    <!-- Image Preview -->
+                    <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                        <img [src]="imageURL" [alt]="tipForm.value.image">
+                    </div>
                 </ion-item>
                 <ion-item>
                     <ion-button type="submit" fill="outline" shape="round" size="default">
@@ -44,5 +53,4 @@
             </form>
         </ion-card-content>
     </ion-card>
-
 </ion-content>

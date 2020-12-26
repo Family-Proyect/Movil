@@ -5,18 +5,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TipsPageRoutingModule } from './tips-routing.module';
+import { NtipPageRoutingModule } from './ntip-routing.module';
 
-import { TipsPage } from './tips.page';
+import { NtipPage } from './ntip.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TipsPageRoutingModule,
+    NtipPageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [TipsPage]
+  declarations: [NtipPage]
 })
-export class TipsPageModule {}
+export class NtipPageModule {}

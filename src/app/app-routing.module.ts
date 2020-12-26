@@ -80,6 +80,10 @@ const routes: Routes = [
   },  {
     path: 'ntestimonio',
     loadChildren: () => import('./pages/ntestimonio/ntestimonio.module').then( m => m.NtestimonioPageModule)
+  },
+  {
+    path: 'ntip',
+    loadChildren: () => import('./pages/ntip/ntip.module').then( m => m.NtipPageModule)
   }
 
 ];

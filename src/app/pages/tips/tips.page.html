@@ -1,12 +1,38 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Tips</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Tips</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-card *ngFor="let tip of tips; let i = index">
+        <ion-item *ngIf='i%2 === 0'>
+            <ion-avatar slot="start">
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+            <h4>{{tip.usuario}}</h4>
+            <!--<p>{{dateForTweet(tweet.created_at)}}</p>-->
+        </ion-item>
+        <ion-item *ngIf='i%2 !== 0'>
+            <h4 slot="end">{{tip.usuario}}</h4>
+            <ion-avatar slot="end">
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+            <!--<p>{{dateForTweet(tweet.created_at)}}</p>-->
+        </ion-item>
+        <ion-card-subtitle>{{tip.titulo}}</ion-card-subtitle>
+        <img src="{{media+'/media/'+tip.image}}" *ngIf="tip.image">
+        <ion-card-content>
+            <p>{{tip.descripcion}}</p>
+        </ion-card-content>
+    </ion-card>
 
+    <ion-fab *ngIf="isAuth" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="presentModal()">
+            <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
