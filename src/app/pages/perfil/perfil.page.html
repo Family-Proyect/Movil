@@ -1,12 +1,48 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Perfil</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Perfil</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="usuario">
+    <div class="user-photo" padding-top>
+        <ion-avatar>
+            <!--<img [src]="profile.photoURL || '/assets/images/noavatar.png'">-->
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+    </div>
 
+    <ion-list>
+        <ion-item>
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>
+                <p>Nombre</p>
+                <h2>{{usuario.Nombre+" "+usuario.Apellido}}</h2>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="mail" slot="start"></ion-icon>
+            <ion-label>
+                <p>Email</p>
+                <h2>{{usuario.Email}}</h2>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="calendar-outline" slot="start"></ion-icon>
+            <ion-label>
+                <p>Edad</p>
+                <h2>{{usuario.Edad}}</h2>
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="male-female-outline" slot="start"></ion-icon>
+            <ion-label>
+                <p>Genero</p>
+                <h2>{{usuario.Sexo}}</h2>
+            </ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

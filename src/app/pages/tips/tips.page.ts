@@ -28,7 +28,6 @@ export class TipsPage implements OnInit {
     this.tipsservice.cargarTips().subscribe(
       data => {
         this.tips = data;
-        console.log(data)
       }
     );
   }

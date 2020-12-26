@@ -33,6 +33,7 @@ export class LoginService {
           if(res['status']=="true"){
             this.storage.set('inicioSesion', true);
             this.storage.set('usuario', res['usuario']);
+            this.storage.set('username', res['username']);
             this.authenticationState.next(true);
 
           }else{
