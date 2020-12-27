@@ -14,6 +14,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -30,6 +31,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
     SplashScreen,
     Keyboard,
     GooglePlus,
+    YoutubeVideoPlayer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

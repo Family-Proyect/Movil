@@ -1,9 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tema-detalle</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>{{titulo}}</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-card *ngFor="let det of detalle;">
+        <ion-card-content>
+            <ion-slides pager="true" [options]="slideOpts">
+                <ion-slide *ngFor="let img of imagenes">
+                    <ion-img [src]="media+'/media/'+img.image"></ion-img>
+                </ion-slide>
+            </ion-slides>
+            <div [innerHTML]="det?.descripcion"></div>
+            <ion-item>
+                <ion-icon name="logo-youtube" (click)="abrirVideo(video)" slot="end"></ion-icon>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="isAuth">
+        <ion-card-header>
+            <ion-card-subtitle>Consejerias
+                <ion-icon style="float: right;" item-right name="{{collapseC}}" (click)="expandirC(collapseC)"></ion-icon>
+            </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content *ngIf="collapseC=='remove-outline'">
+            Consejerias
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="isAuth">
+        <ion-card-header>
+            <ion-card-subtitle>Ver Mas Temas
+                <ion-icon style="float: right;" item-right name="{{collapseM}}" (click)="expandirM(collapseM)"></ion-icon>
+            </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content *ngIf="collapseM=='remove-outline'">
+            <ion-list no-lines>
+                <ion-item id="temas" *ngFor="let tema of temas">
+                    <ion-icon name="caret-forward-outline"></ion-icon>
+                    <ion-label (click)="verTema(tema.id_tema)">{{tema.titulo}}</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

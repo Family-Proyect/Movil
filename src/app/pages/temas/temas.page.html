@@ -9,7 +9,7 @@
 
 <ion-content fullscreen>
 
-   <ion-card *ngFor="let tema of temas;">
+   <ion-card *ngFor="let tema of temas;" (click)="verTema(tema.id)">
       <img src="{{media+tema.image}}"/>
       <ion-card-header>
         <ion-card-subtitle>{{tema.categoria}}</ion-card-subtitle>

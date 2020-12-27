@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './services/auth-guard.service';
+import { DataResolverService } from './services/data-resolver.service';
 
 const routes: Routes = [
   {
@@ -32,7 +33,10 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'tema-detalle',
+    path: 'tema-detalle/:tema',
+    resolve: {
+      special: DataResolverService
+    },
     loadChildren: () => import('./pages/tema-detalle/tema-detalle.module').then( m => m.TemaDetallePageModule),
     canActivate: [AuthGuardService]
   },
@@ -77,7 +81,8 @@ const routes: Routes = [
     path: 'configuracion',
     loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule),
     canActivate: [AuthGuardService]
-  },  {
+  },
+  {
     path: 'ntestimonio',
     loadChildren: () => import('./pages/ntestimonio/ntestimonio.module').then( m => m.NtestimonioPageModule)
   },

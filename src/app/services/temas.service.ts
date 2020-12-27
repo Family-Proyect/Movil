@@ -15,4 +15,20 @@ export class TemasService {
   cargarTemasPrincipales(){
     return this.http.get(this.url+'getPrincipalesTemas/')
   }
+
+  cargarTemaID(params){
+    return this.http.get(this.url+'tema_by_id/'+params)
+  }
+
+  cargarImagesTemaID(params){
+    return this.http.get(this.url+'image_by_tema/'+params)
+  }
+
+  cargarVideosTemaID(params){
+    return this.http.get(this.url+'videos_by_tema/'+params)
+  }
+
+  cargarTemasCat(params){
+    return this.http.get(this.url+'tema_by_category/'+params)
+  }
 }
