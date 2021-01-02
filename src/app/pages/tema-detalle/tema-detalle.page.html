@@ -12,7 +12,7 @@
                     <ion-img [src]="media+'/media/'+img.image"></ion-img>
                 </ion-slide>
             </ion-slides>
-            <div [innerHTML]="det?.descripcion"></div>
+            <div class="ion-text-justify" [innerHTML]="det?.descripcion"></div>
             <ion-item>
                 <ion-icon name="logo-youtube" (click)="abrirVideo(video)" slot="end"></ion-icon>
             </ion-item>

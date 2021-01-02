@@ -101,6 +101,8 @@ export class LoginService {
 
   logout() {
     this.storage.remove('inicioSesion');
+    this.storage.remove('usuario');
+    this.storage.remove('username');
     this.authenticationState.next(false);
   }
 

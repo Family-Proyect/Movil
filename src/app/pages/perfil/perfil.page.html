@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content *ngIf="usuario">
+
     <div class="user-photo" padding-top>
         <ion-avatar>
             <!--<img [src]="profile.photoURL || '/assets/images/noavatar.png'">-->
@@ -15,34 +16,108 @@
         </ion-avatar>
     </div>
 
-    <ion-list>
-        <ion-item>
-            <ion-icon name="person" slot="start"></ion-icon>
-            <ion-label>
-                <p>Nombre</p>
-                <h2>{{usuario.Nombre+" "+usuario.Apellido}}</h2>
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="mail" slot="start"></ion-icon>
-            <ion-label>
-                <p>Email</p>
-                <h2>{{usuario.Email}}</h2>
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="calendar-outline" slot="start"></ion-icon>
-            <ion-label>
-                <p>Edad</p>
-                <h2>{{usuario.Edad}}</h2>
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="male-female-outline" slot="start"></ion-icon>
-            <ion-label>
-                <p>Genero</p>
-                <h2>{{usuario.Sexo}}</h2>
-            </ion-label>
-        </ion-item>
-    </ion-list>
+    <ion-segment (ionChange)="segmentChanged($event)" value="person">
+        <ion-segment-button value="person">
+            <ion-icon name="person-outline"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="edit">
+            <ion-icon name="create-outline"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="type">
+        <ion-list *ngSwitchCase="'person'">
+            <ion-item>
+                <ion-icon name="person" slot="start"></ion-icon>
+                <ion-label>
+                    <h2 *ngIf="usuario?.Nombre || usuario?.Apellido; else elseCondition">{{usuario.Nombre+" "+usuario.Apellido}}</h2>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="mail" slot="start"></ion-icon>
+                <ion-label>
+                    <h2 *ngIf="usuario?.Email; else elseCondition">{{usuario.Email}}</h2>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="calendar-outline" slot="start"></ion-icon>
+                <ion-label>
+                    <h2 *ngIf="usuario?.Edad; else elseCondition">{{usuario.Edad}}</h2>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="male-female-outline" slot="start"></ion-icon>
+                <ion-label>
+                    <h2 *ngIf="usuario?.Sexo; else elseCondition">{{usuario.Sexo}}</h2>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'edit'">
+            <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
+                <ion-item>
+                    <ion-icon name="person" slot="start"></ion-icon>
+                    <ion-label>
+                        <p>Nombre</p>
+                        <ion-input type="text" placeholder="Ingrese su nombre" autocapitalize="on" formControlName="nombre"></ion-input>
+                    </ion-label>
+                </ion-item>
+                <div *ngIf="perfilForm.get('nombre').hasError('required') && perfilForm.get('nombre').touched">
+                    <div class="error" *ngIf="perfilForm.get('nombre').hasError('required') && perfilForm.get('nombre').touched">
+                        Este campo es requerido
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-icon name="person" slot="start"></ion-icon>
+                    <ion-label>
+                        <p>Apellido</p>
+                        <ion-input type="text" placeholder="Ingrese su apellido" autocapitalize="on" formControlName="apellido"></ion-input>
+                    </ion-label>
+                </ion-item>
+                <div *ngIf="perfilForm.get('apellido').hasError('required') && perfilForm.get('apellido').touched">
+                    <div class="error" *ngIf="perfilForm.get('apellido').hasError('required') && perfilForm.get('apellido').touched">
+                        Este campo es requerido
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-icon name="mail" slot="start"></ion-icon>
+                    <ion-label>
+                        <p>Email</p>
+                        <ion-input type="email" placeholder="Ingrese su correo" formControlName="email"></ion-input>
+                    </ion-label>
+                </ion-item>
+                <div no-lines *ngIf="( perfilForm.get('email').hasError('pattern') || perfilForm.get('email').hasError('required') ) && perfilForm.get('email').touched">
+                    <div class="error" *ngIf="perfilForm.get('email').hasError('required') && perfilForm.get('email').touched">
+                        Este campo es requerido
+                    </div>
+                    <div class="error" *ngIf="perfilForm.get('email').hasError('pattern') && perfilForm.get('email').touched">
+                        No es un correo
+                    </div>
+                </div>
+                <ion-item>
+                    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+                    <ion-label>
+                        <p>Fecha Nacimiento</p>
+                        <ion-datetime display-format="DD-MM-YYYY" cancel-text="Cancelar" done-text="Aceptar" placeholder="Ingrese su fecha de nacimiento" formControlName="fnac"></ion-datetime>
+                    </ion-label>
+                </ion-item>
+                <div *ngIf="perfilForm.get('fnac').hasError('required') && perfilForm.get('fnac').touched">
+                    <div class="error" *ngIf="perfilForm.get('fnac').hasError('required') && perfilForm.get('fnac').touched">
+                        Este campo es requerido
+                    </div>
+                </div>
+                <ion-item lines="none">
+                    <ion-button slot="end" type="submit" fill="outline" shape="round" size="default">
+                        Guardar
+                    </ion-button>
+                </ion-item>
+            </form>
+        </ion-list>
+    </div>
+
+
 </ion-content>
+
+<ng-template #elseCondition>
+    <p>Sin Definir</p>
+</ng-template>

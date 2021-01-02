@@ -26,7 +26,7 @@
         <ion-card-subtitle>{{tip.titulo}}</ion-card-subtitle>
         <img src="{{media+'/media/'+tip.image}}" *ngIf="tip.image">
         <ion-card-content>
-            <p>{{tip.descripcion}}</p>
+            <p class="ion-text-justify" [innerHTML]="tip?.descripcion"></p>
         </ion-card-content>
     </ion-card>
 
