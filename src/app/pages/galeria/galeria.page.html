@@ -9,10 +9,10 @@
 
 <ion-content>
 
-    <ion-grid *ngIf="itemListData.length > 0; else skeleton" fixed>
+    <ion-grid fixed>
         <div class="images">
-            <div class="one-image" *ngFor="let image of itemListData;">
-                <img src="{{media+'/media/'+image.image}}">
+            <div class="one-image" *ngFor="let image of itemListData; let i = index">
+                <ion-img *ngIf="i<=counter; else skeleton" [src]="media+'/media/'+image.image" (ionImgDidLoad)="addCounter()"></ion-img>
             </div>
         </div>
     </ion-grid>
@@ -30,29 +30,6 @@
         <ion-col>
             <div class="pin-item">
                 <ion-skeleton-text style="margin-bottom: 12px; height:220px; border-radius: 8px;" animated></ion-skeleton-text>
-            </div>
-            <div class="pin-item">
-                <ion-skeleton-text style="margin-bottom: 12px; height:120px; border-radius: 8px;" animated></ion-skeleton-text>
-            </div>
-            <div class="pin-item">
-                <ion-skeleton-text style="margin-bottom: 12px; height:180px; border-radius: 8px;" animated></ion-skeleton-text>
-            </div>
-            <div class="pin-item">
-                <ion-skeleton-text style="margin-bottom: 12px; height:80px; border-radius: 8px;" animated></ion-skeleton-text>
-            </div>
-        </ion-col>
-        <ion-col>
-            <div class="pin-item">
-                <ion-skeleton-text style="margin-bottom: 12px; height:150px; border-radius: 8px;" animated></ion-skeleton-text>
-            </div>
-            <div class="pin-item">
-                <ion-skeleton-text style="margin-bottom: 12px; height:240px; border-radius: 8px;" animated></ion-skeleton-text>
-            </div>
-            <div class="pin-item">
-                <ion-skeleton-text style="margin-bottom: 12px; height:100px; border-radius: 8px;" animated></ion-skeleton-text>
-            </div>
-            <div class="pin-item">
-                <ion-skeleton-text style="margin-bottom: 12px; height:180px; border-radius: 8px;" animated></ion-skeleton-text>
             </div>
         </ion-col>
     </ion-row>

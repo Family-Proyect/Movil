@@ -13,15 +13,15 @@ export class GaleriaPage implements OnInit {
   itemListData = [];
   page_number = 0;
   page_limit = 12;
+  counter: number = 0;
+
 
   constructor(
     private galeriaservice:GaleriaService,
   ) { }
 
   ngOnInit() {
-    setTimeout(() => {
       this.cargarGaleria(false, "");
-    }, 2000);
   }
 
   cargarGaleria(isFirstLoad, event){
@@ -42,6 +42,10 @@ export class GaleriaPage implements OnInit {
 
   scroll(event) {
     this.cargarGaleria(true, event);
+  }
+
+  addCounter(){
+    this.counter++;
   }
 
 }
