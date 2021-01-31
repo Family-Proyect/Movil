@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PerfilService } from '../../services/perfil.service';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-perfil',
@@ -19,7 +18,6 @@ export class PerfilPage implements OnInit {
     private perfilservice: PerfilService,
     private storage: Storage,
     private formBuilder: FormBuilder, 
-    private iab: InAppBrowser,
   ) { }
 
   ionViewWillEnter() {
@@ -64,8 +62,4 @@ export class PerfilPage implements OnInit {
     this.type = event.detail.value;
   }
 
-  OpenZoom(link){
-    const browser = this.iab.create(link);
-    browser.show()
-  }
 }

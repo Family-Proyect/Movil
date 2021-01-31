@@ -119,10 +119,8 @@
         <ion-list *ngSwitchCase="'consejeria'">
             <ion-item>
                 <p>Usted tiene una consejeria pendiente. Por favor no olvidarse de asistir su consejero lo atendera Desde {{usuario.inicio|slice:11:19}} hasta {{usuario.termina|slice:11:19}}</p>
-            </ion-item> 
-            <ion-button (click)="OpenZoom(usuario.consejeria)" expand="block" fill="clear" shape="round">
-                Abrir en Zoom
-            </ion-button>
+            </ion-item>
+            <a target="_blank" href="{{usuario.consejeria}}">Abrir en Zoom</a> 
         </ion-list>
     </div>
 
