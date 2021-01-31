@@ -23,6 +23,9 @@
         <ion-segment-button value="edit">
             <ion-icon name="create-outline"></ion-icon>
         </ion-segment-button>
+        <ion-segment-button value="consejeria">
+            <ion-icon name="calendar-outline"></ion-icon>
+        </ion-segment-button>
     </ion-segment>
 
     <div [ngSwitch]="type">
@@ -112,6 +115,14 @@
                     </ion-button>
                 </ion-item>
             </form>
+        </ion-list>
+        <ion-list *ngSwitchCase="'consejeria'">
+            <ion-item>
+                <p>Usted tiene una consejeria pendiente. Por favor no olvidarse de asistir su consejero lo atendera Desde {{usuario.inicio|slice:11:19}} hasta {{usuario.termina|slice:11:19}}</p>
+            </ion-item>
+            <ion-button (click)="OpenZoom(usuario.consejeria)" expand="block" fill="clear" shape="round">
+                Abrir en Zoom
+            </ion-button>
         </ion-list>
     </div>
 

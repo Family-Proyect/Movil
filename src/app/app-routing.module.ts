@@ -41,11 +41,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'consejeria',
-    loadChildren: () => import('./pages/consejeria/consejeria.module').then( m => m.ConsejeriaPageModule),
-    canActivate: [AuthGuardService]
-  },
-  {
     path: 'donacion',
     loadChildren: () => import('./pages/donacion/donacion.module').then( m => m.DonacionPageModule),
     canActivate: [AuthGuardService]

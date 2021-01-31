@@ -25,7 +25,20 @@
             </ion-card-subtitle>
         </ion-card-header>
         <ion-card-content *ngIf="collapseC=='remove-outline'">
-            Consejerias
+            <ion-list *ngIf="consejerias?.length > 0">
+                <ion-row *ngFor="let i of consejerias">
+                    <ion-col size="6">{{i.tema|slice:0:15}}</ion-col>
+                    <ion-col size="4">{{i.empieza|slice:0:10}}</ion-col>
+                    <ion-col size="2">
+                        <ion-icon name="checkmark-outline" (click)="selConsejeria(i.id)"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-list>
+            <ion-list *ngIf="!consejerias">
+                <ion-item>
+                    <ion-label>No existen horarios disponibles</ion-label>
+                </ion-item>
+            </ion-list>
         </ion-card-content>
     </ion-card>
     <ion-card *ngIf="isAuth">

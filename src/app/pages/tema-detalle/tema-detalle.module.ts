@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TemaDetallePageRoutingModule } from './tema-detalle-routing.module';
 
 import { TemaDetallePage } from './tema-detalle.page';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TemaDetallePageRoutingModule
+    TemaDetallePageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [TemaDetallePage]
 })

@@ -32,22 +32,17 @@ export class AppComponent implements OnInit {
       url: '/tips',
       wLogin: true,
     },
-    {
+    /*{
       title: 'Sugerencias',
       url: '/sugerencias',
       wLogin: false,
-    },
+    },*/
     {
       title: 'Galeria',
       url: '/galeria',
       wLogin: true,
     },
-    {
-      title: 'Consejeria',
-      url: '/consejeria',
-      wLogin: false,
-    },
-    {
+    /*{
       title: 'Donaciones',
       url: '/donacion',
       wLogin: false,
@@ -56,17 +51,17 @@ export class AppComponent implements OnInit {
       title: 'Campañas',
       url: '/campanias',
       wLogin: false,
-    },
+    },*/
     {
       title: 'Perfil',
       url: '/perfil',
       wLogin: false,
     },
-    {
+    /*{
       title: 'Configuracion',
       url: '/configuracion',
       wLogin: false,
-    }
+    }*/
   ];
 
   constructor(
