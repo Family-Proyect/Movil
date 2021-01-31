@@ -17,7 +17,7 @@
                 <ion-item id="testimonioTit">
                     <ion-label class="subt" position="floating">Titulo: </ion-label>
                     <ion-input autocapitalize="on" autocomplete="off" autocorrect="on" clearOnEdit="true" inputmode="text" type="text" formControlName="title"></ion-input>
-                </ion-item>
+                </ion-item> 
                 <div *ngIf="( testimonioForm.get('title').hasError('required') ) && testimonioForm.get('title').touched">
                     <div class="error" *ngIf="testimonioForm.get('title').hasError('required') && testimonioForm.get('title').touched">
                         Este campo es requerido
